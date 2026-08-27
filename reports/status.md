@@ -19,7 +19,7 @@
 | Production integration | OUT_OF_SCOPE | No 0066, Data Flywheel, UI, order or business-data writes |
 | Recruitment playground | COMPLETE_LOCAL_DEMO | Chinese-first, local-only, artifact-driven; browser-checked at desktop and mobile widths |
 | Portable static export | READY | Reproducible self-contained directory/ZIP; generated output is ignored by Git |
-| Public portfolio deployment | PENDING_FIRST_STANDALONE_RUN | Standalone Pages workflow and portable export are ready; no public URL is claimed before HTTP verification |
+| Public portfolio deployment | COMPLETE_PUBLIC_HTTP_200 | `https://hey-chloe.github.io/KAI-Offline-RecSys-Lab/`; standalone Pages workflow passed and anonymous HTTPS/browser verification succeeded |
 
 Executed metrics are public offline measurements only. They are not evidence of
 online lift, marketplace performance, conversion lift or revenue lift.

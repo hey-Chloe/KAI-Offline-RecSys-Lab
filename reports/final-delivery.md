@@ -195,8 +195,9 @@ unavailable rather than being fabricated.
 
 `make export-playground` creates an ignored, self-contained static directory
 and ZIP for controlled migration. The user-owned standalone repository includes
-GitHub CI and a Pages deployment workflow. A public URL is claimable only after
-the standalone deployment and anonymous HTTP verification succeed.
+GitHub CI and a Pages deployment workflow. The public Playground is deployed at
+`https://hey-chloe.github.io/KAI-Offline-RecSys-Lab/`; the standalone workflow,
+anonymous HTTPS 200 response and real browser artifact loading were verified.
 
 `make verify-public` validates source terms, raw file fingerprints, config and
 split fingerprints, counts, seeds and result structure. `make test` and

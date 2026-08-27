@@ -1,5 +1,9 @@
 # KAI Offline RecSys Lab
 
+[![Offline RecSys Lab CI](https://github.com/hey-Chloe/KAI-Offline-RecSys-Lab/actions/workflows/ci.yml/badge.svg)](https://github.com/hey-Chloe/KAI-Offline-RecSys-Lab/actions/workflows/ci.yml)
+
+**[Open the public interactive Playground](https://hey-chloe.github.io/KAI-Offline-RecSys-Lab/)**
+
 Independent public-data research for end-to-end retrieval/ranking, CTR,
 post-click conversion, position-bias evaluation and value-aware ranking.
 
@@ -87,6 +91,8 @@ task rather than falsely joined to the Amazon funnel. See `playground/README.md`
 GitHub Actions verifies the test suite, one-command reproduction, public
 reports and portable page export. The standalone Pages workflow publishes only
 the self-contained Playground after its truth-boundary verifier passes.
+The public deployment above was anonymously verified over HTTPS after the
+standalone repository handoff.
 
 The Amazon catalog in this version has 25,754 items. It supports a measured
 tens-of-thousands full-catalog and ANN evaluation claim, not a million-item
