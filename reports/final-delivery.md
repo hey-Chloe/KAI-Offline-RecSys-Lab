@@ -194,8 +194,9 @@ non-training demo fixture. Missing user-level BPR/Two-Tower traces remain
 unavailable rather than being fabricated.
 
 `make export-playground` creates an ignored, self-contained static directory
-and ZIP for controlled migration. GitHub CI and a Pages deployment workflow are
-included. Pages is not configured or deployed yet, so no public URL is claimed.
+and ZIP for controlled migration. The user-owned standalone repository includes
+GitHub CI and a Pages deployment workflow. A public URL is claimable only after
+the standalone deployment and anonymous HTTP verification succeed.
 
 `make verify-public` validates source terms, raw file fingerprints, config and
 split fingerprints, counts, seeds and result structure. `make test` and

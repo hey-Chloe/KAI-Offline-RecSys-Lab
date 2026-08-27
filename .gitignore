@@ -1,6 +1,7 @@
 /.venv
 /data
 /artifacts
+/dist
 *.pt
 *.onnx
 *.bin

@@ -2,7 +2,7 @@
 
 | Area | Status | Evidence boundary |
 |---|---|---|
-| Isolated branch/worktree | READY | Based on canonical main; no Compute benchmark or P0-A files copied |
+| Standalone repository | READY | Lab-only subtree history; no Compute, 0066, production application or business data copied |
 | Source ledger | READY | Amazon research-only/no assigned license; Criteo CC BY-NC-SA 4.0; Open Bandit CC BY 4.0 |
 | Python environment | READY | Pinned macOS arm64 PyTorch/scikit-learn/HNSW environment |
 | Retrieval/ANN/sequence code | READY | Popularity, ItemKNN, BPR, Two-Tower, exact/HNSW and target-aware attention |
@@ -19,7 +19,7 @@
 | Production integration | OUT_OF_SCOPE | No 0066, Data Flywheel, UI, order or business-data writes |
 | Recruitment playground | COMPLETE_LOCAL_DEMO | Chinese-first, local-only, artifact-driven; browser-checked at desktop and mobile widths |
 | Portable static export | READY | Reproducible self-contained directory/ZIP; generated output is ignored by Git |
-| Public portfolio deployment | WORKFLOW_READY_NOT_DEPLOYED | CI/Pages workflow and portable export are ready; Pages environment is not configured and no public URL is claimed |
+| Public portfolio deployment | PENDING_FIRST_STANDALONE_RUN | Standalone Pages workflow and portable export are ready; no public URL is claimed before HTTP verification |
 
 Executed metrics are public offline measurements only. They are not evidence of
 online lift, marketplace performance, conversion lift or revenue lift.

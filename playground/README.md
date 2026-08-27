@@ -45,4 +45,4 @@ make playground
 
 运行 `make export-playground`，会在 `dist/recommendation-systems-playground-portable/`
 生成完全自包含的静态目录，并同时生成 ZIP。个人网站接入方法见该目录内的 `README.md`。
-仓库同时包含 CI 和 Pages workflow，但当前没有已验证的公开部署 URL。
+独立仓库同时包含 CI 和 Pages workflow；公开地址只在匿名 HTTP 验证成功后记录。

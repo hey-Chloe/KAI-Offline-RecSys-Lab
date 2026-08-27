@@ -3,10 +3,13 @@
 Independent public-data research for end-to-end retrieval/ranking, CTR,
 post-click conversion, position-bias evaluation and value-aware ranking.
 
+Canonical repository: `hey-Chloe/KAI-Offline-RecSys-Lab`. The project was
+extracted with its Lab-specific Git history; see `PROVENANCE.md`.
+
 ## Truth boundary
 
-- This directory is physically separate from Compute Production, migration 0066,
-  its Data Flywheel and the frozen Compute Ranking benchmark.
+- This standalone repository contains no Compute Production, migration 0066,
+  Data Flywheel, frozen Compute Ranking benchmark or marketplace code.
 - Only `public` and explicitly labeled `synthetic` test data are accepted.
 - Synthetic fixtures validate code paths only. They are never reported as public
   benchmark or production results.
@@ -82,9 +85,8 @@ and cold-start support; CVR/ESMM is shown as a separate impression-level ads
 task rather than falsely joined to the Amazon funnel. See `playground/README.md`.
 
 GitHub Actions verifies the test suite, one-command reproduction, public
-reports and portable page export. A Pages deployment workflow is included, but
-no public deployment is claimed until the branch is approved, merged and the
-repository Pages environment is configured.
+reports and portable page export. The standalone Pages workflow publishes only
+the self-contained Playground after its truth-boundary verifier passes.
 
 The Amazon catalog in this version has 25,754 items. It supports a measured
 tens-of-thousands full-catalog and ANN evaluation claim, not a million-item
