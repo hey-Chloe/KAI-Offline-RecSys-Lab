@@ -1,0 +1,159 @@
+{
+  "catalogAudit": {
+    "categoryPresent": 1253672,
+    "duplicateItemsExcluded": 0,
+    "malformedRows": 0,
+    "missingIdentifiers": 0,
+    "perSource": {
+      "amazon-reviews-2023-amazon-fashion": {
+        "duplicateItems": 0,
+        "malformedRows": 0,
+        "missingIdentifiers": 0,
+        "rows": 826108,
+        "uniqueItemsAdded": 826108
+      },
+      "amazon-reviews-2023-industrial-scientific": {
+        "duplicateItems": 0,
+        "malformedRows": 0,
+        "missingIdentifiers": 0,
+        "rows": 427564,
+        "uniqueItemsAdded": 427564
+      }
+    },
+    "rows": 1253672,
+    "titlePresent": 1253589,
+    "uniqueItems": 1253672
+  },
+  "claimableOnlinePerformance": false,
+  "dataOrigin": "public",
+  "evidence": {
+    "catalogOrderedSha256": "eafac62d05f6019fae758ef718d7fb60b369daf92b7d4d4a418d80a305a009a2",
+    "configCanonicalSha256": "20acfacfdfd1b9d409e0610795d7c137010f0d4419229b47cbe15edf4633a17b",
+    "configSha256": "f580044b2e88fb64544131a63acea05b71bddde386f9d53229d36592207313e6",
+    "datasetFiles": [
+      {
+        "bytes": 281523932,
+        "name": "meta_Industrial_and_Scientific.jsonl.gz",
+        "sha256": "0beb251cec166347a3ec3ef23e55ec89f7fb27a6e8e9a0737d6b34cdc184ebcb",
+        "sourceId": "amazon-reviews-2023-industrial-scientific"
+      },
+      {
+        "bytes": 224299124,
+        "name": "meta_Amazon_Fashion.jsonl.gz",
+        "sha256": "0b121c7494b0216ba3bf80adce9c79286fe08f14086966f841fe6716e1a24b73",
+        "sourceId": "amazon-reviews-2023-amazon-fashion"
+      }
+    ],
+    "frozenCheckpoint": {
+      "candidateId": "metadata-d64-uniform",
+      "name": "metadata-d64-uniform-seed-3407.pt",
+      "seed": 3407,
+      "sha256": "e221fbe6be56c21c2444c555eccb4f7e924a66ee09e74459a1be1fb1e4fcf256"
+    },
+    "splitSha256": "9690369109f78dc2fad7a9b08d1683ef4deb6cd886a8de53667b445a385c85ff"
+  },
+  "experimentId": "amazon23-public-metadata-million-item-hnsw-scale-v1",
+  "limitations": [
+    "This experiment proves local CPU embedding-index scalability only; it does not measure recommendation relevance or online impact.",
+    "Amazon Reviews'23 metadata has no provider-assigned dataset license; use remains local, research-only, and non-redistributive.",
+    "The frozen model was trained on Industrial_and_Scientific interactions; cross-category products use a shared UNK identity and metadata features only.",
+    "Queries are frozen public review/rating-proxy users, not production impressions, clicks, purchases, or KAI business data.",
+    "Sequential single-query latency on this host is not a production service SLO and excludes network/service overhead."
+  ],
+  "protocol": {
+    "coldStartItemIdentity": "shared UNK item ID; only title/category metadata varies",
+    "counts": {
+      "duplicateRowsExcluded": 0,
+      "malformedRows": 0,
+      "missingIdentifierRows": 0,
+      "queryUsers": 256,
+      "sourceRows": 1253672,
+      "uniqueCatalogItems": 1253672
+    },
+    "ks": [
+      20,
+      50,
+      100
+    ],
+    "querySelection": "deterministic sample from frozen Industrial_and_Scientific test users",
+    "sameFullCatalogForExactAndAnn": true,
+    "sameRealUserQueriesForExactAndAnn": true,
+    "seeds": [
+      20260827
+    ],
+    "syntheticExpansion": false,
+    "vectorDuplicationForScale": false
+  },
+  "purpose": "retrieval_scalability_only",
+  "results": {
+    "ann": {
+      "100": {
+        "annRecallAtK": 0.8538671875,
+        "meanLatencyMs": 0.33850425390625,
+        "p50LatencyMs": 0.3153335,
+        "p95LatencyMs": 0.59605175,
+        "qpsSequential": 2954.172624007714,
+        "queryCount": 256
+      },
+      "20": {
+        "annRecallAtK": 0.8560546875,
+        "meanLatencyMs": 0.3443289375,
+        "p50LatencyMs": 0.3066045,
+        "p95LatencyMs": 0.6330312499999999,
+        "qpsSequential": 2904.199708745072,
+        "queryCount": 256
+      },
+      "50": {
+        "annRecallAtK": 0.8565625000000001,
+        "meanLatencyMs": 0.33127667578125003,
+        "p50LatencyMs": 0.3075205,
+        "p95LatencyMs": 0.607177,
+        "qpsSequential": 3018.6248326770947,
+        "queryCount": 256
+      }
+    },
+    "exact": {
+      "meanAmortizedLatencyMs": 11.171096027396743,
+      "queryCount": 256,
+      "topK": 100,
+      "totalSeconds": 2.859800583013566
+    },
+    "hnswIndex": {
+      "buildSeconds": 42.16718874999788,
+      "buildThreads": 8,
+      "bytes": 507146760,
+      "efConstruction": 100,
+      "efSearch": 400,
+      "m": 16,
+      "sha256": "e2e98fb4892bec5c8fcab08687510c2043a86ff09512bf6524abc4b7e171bb7a"
+    },
+    "itemEmbeddings": {
+      "allFinite": true,
+      "bytes": 320940160,
+      "dimension": 64,
+      "dtype": "float32",
+      "encodingSeconds": 19.519894416996976,
+      "items": 1253672,
+      "sha256": "e4098b1413a36b6896b89c4ded0dd4bd861dd8d8c5b1d161003d4ee3e4f127c7",
+      "unitNormMean": 1.0
+    }
+  },
+  "runtime": {
+    "hnswlib": "0.8.0",
+    "logicalCpuCount": 10,
+    "machine": "arm64",
+    "memoryBytes": 17179869184,
+    "numpy": "2.3.5",
+    "platform": "macOS-26.6.2-arm64-arm-64bit",
+    "processor": "arm",
+    "python": "3.12.13",
+    "torch": "2.13.0"
+  },
+  "schemaVersion": 1,
+  "source": {
+    "id": "amazon-reviews-2023-multi-category-metadata",
+    "officialUrl": "https://amazon-reviews-2023.github.io/main.html",
+    "terms": "Research-only local use; provider does not assign a dataset license; raw rows, embeddings, and index are not redistributed."
+  },
+  "status": "COMPLETE"
+}
