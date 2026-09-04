@@ -30,5 +30,5 @@ LR has the strongest ROC-AUC and PR-AUC in this fixed subset; DeepFM has the low
 - The shard belongs to one published day, but the Hugging Face parquet conversion order was not independently audited; the split is source-order, not claimed temporal.
 - Criteo states positive and negative examples were subsampled at different rates, so raw probabilities are not population CTR without correction.
 - Hashed categorical feature semantics are undisclosed.
-- Offline public-data metrics do not establish KAI production, online lift, or business performance.
+- Offline public-data metrics do not establish production, online lift, or business performance.
 - CC BY-NC-SA 4.0 restricts this dataset use to noncommercial purposes under its terms.

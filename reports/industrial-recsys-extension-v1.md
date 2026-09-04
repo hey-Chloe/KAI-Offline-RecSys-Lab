@@ -63,7 +63,7 @@ test sets. It does not convert offline evidence into a production claim.
 ## Verification
 
 - Offline boundary audit: 7 registered public/synthetic sources.
-- Full test suite: 95 passed.
+- Full integrated test suite: 113 passed.
 - Public-report validators: all executed reports passed.
 - Two-Tower V2 frozen verifier: passed.
 - CVR/ESMM data/source verifier: `DATA_VERIFIED`.
@@ -81,8 +81,8 @@ traffic. They are not claimed by this version:
 - online CTR/CVR improvement, revenue improvement or marketplace conversion;
 - population-level production drift detection, deployment orchestration or
   automatic production rollback;
-- the KAI Compute recommendation → selection → order → fulfillment → settlement
-  loop, which remains dependent on canonical schema approval and real listings.
+- a real recommendation → selection → order → fulfillment → settlement loop,
+  which requires an approved production system and real traffic.
 
 The local serving harness defines and tests these integration boundaries. It is
 not evidence that the production dependencies exist.

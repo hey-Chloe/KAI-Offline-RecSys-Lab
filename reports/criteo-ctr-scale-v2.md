@@ -23,5 +23,5 @@ Status: `COMPLETE`; public offline only; online claim: `false`.
 - The parquet conversion order was not independently audited, so source-order blocks are not described as chronological.
 - Criteo states positive and negative examples were subsampled at different rates; raw probabilities are not population CTR without correction.
 - Hashed categorical feature semantics are undisclosed.
-- Offline public-data metrics do not establish online CTR lift, revenue lift, or KAI production performance.
+- Offline public-data metrics do not establish online CTR lift, revenue lift, or production performance.
 - CC BY-NC-SA 4.0 restricts use to noncommercial research under its terms.

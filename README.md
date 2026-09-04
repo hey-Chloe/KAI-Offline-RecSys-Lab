@@ -7,20 +7,20 @@
 Independent public-data research for end-to-end retrieval/ranking, CTR,
 post-click conversion, position-bias evaluation and value-aware ranking.
 
-Canonical repository: `hey-Chloe/KAI-Offline-RecSys-Lab`. The project was
-extracted with its Lab-specific Git history; see `PROVENANCE.md`.
+Canonical personal repository: `hey-Chloe/KAI-Offline-RecSys-Lab`. Its focused
+Lab history and later public-scale extensions are documented in `PROVENANCE.md`.
 
 ## Truth boundary
 
-- This standalone repository contains no Compute Production, migration 0066,
-  Data Flywheel, frozen Compute Ranking benchmark or marketplace code.
+- This is a standalone personal research project. It contains no company
+  backend, production application, business dataset or marketplace code.
 - Only `public` and explicitly labeled `synthetic` test data are accepted.
 - Synthetic fixtures validate code paths only. They are never reported as public
   benchmark or production results.
 - Raw third-party datasets and trained artifacts are ignored by Git. Acquisition
   requires a captured dataset-specific usage record in `sources/source-ledger.json`.
 - No offline result is evidence of online CTR, conversion lift, revenue lift or
-  KAI Compute marketplace performance.
+  production performance.
 
 ## Workstreams
 

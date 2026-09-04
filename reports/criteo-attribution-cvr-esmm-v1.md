@@ -46,5 +46,5 @@ The publisher's raw `conversion` label can include a conversion within 30 days e
 - The fixed prefix contains repeated campaign/user timelines and is not an IID random sample; the split is deliberately temporal and may expose distribution shift.
 - User identity and all outcome-derived fields are excluded, but anonymized categorical meanings are undisclosed.
 - The independent baseline and ESMM are compact CPU/MPS-scale research implementations, not production serving models.
-- Offline public-data metrics do not establish KAI production, online lift, conversion lift, revenue, or business performance.
+- Offline public-data metrics do not establish production, online lift, conversion lift, revenue, or business performance.
 - CC BY-NC-SA 4.0 restricts use to noncommercial purposes under its terms.

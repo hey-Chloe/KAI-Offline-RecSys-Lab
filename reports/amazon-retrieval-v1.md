@@ -79,7 +79,7 @@ full-catalog retrieval claim, not a million-item claim.
 - The provider has not assigned a dataset license and describes the release as
   primarily for research. This is isolated non-commercial research use; raw
   rows are not redistributed.
-- Review/rating interactions are not impressions, clicks, orders, or KAI
+- Review/rating interactions are not impressions, clicks, orders, or real
   business events.
 - Full hashes, file sizes, split hash, counts, exclusions, per-seed results,
   and limitations: `reports/amazon-retrieval-v1-results.json`.

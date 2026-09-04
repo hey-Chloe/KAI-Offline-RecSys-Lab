@@ -26,6 +26,9 @@ def main() -> None:
         "criteo-ctr-v1-results.json",
         "criteo-esmm-v1-results.json",
         "position-bias-open-bandit-full-ope-v1.json",
+        "amazon-million-scale-v1-results.json",
+        "criteo-ctr-scale-v2-results.json",
+        "criteo-attribution-cvr-esmm-v1-results.json",
         "./data/demo-fixtures.json",
     }
     absent = sorted(path for path in required_fetches if path not in app)
@@ -43,6 +46,10 @@ def main() -> None:
         "CVR / ESMM 不再是 synthetic smoke",
         "先看证据，再看演示",
         "Hard negative 没有获胜",
+        "规模化补充验证",
+        'id="scale-ann-items"',
+        'id="scale-ctr-rows"',
+        'id="scale-cvr-rows"',
     }
     absent_copy = sorted(value for value in required_interface_copy if value not in index)
     if absent_copy:
@@ -96,6 +103,9 @@ def main() -> None:
     position = read_json("reports/position-bias-open-bandit-full-ope-v1.json")
     esmm = read_json("reports/criteo-esmm-v1-results.json")
     amazon_v3 = read_json("reports/amazon-end-to-end-v3-results.json")
+    million_scale = read_json("reports/amazon-million-scale-v1-results.json")
+    ctr_scale = read_json("reports/criteo-ctr-scale-v2-results.json")
+    cvr_scale = read_json("reports/criteo-attribution-cvr-esmm-v1-results.json")
     if retrieval.get("dataOrigin") != "public" or ctr.get("dataOrigin") != "public" or position.get("dataOrigin") != "public":
         raise SystemExit("all displayed benchmark reports must be public")
     if esmm.get("status") != "COMPLETE" or esmm.get("dataOrigin") != "official_public":
@@ -104,6 +114,15 @@ def main() -> None:
         raise SystemExit("displayed Amazon V3 report must preserve its complete offline boundary")
     if amazon_v3.get("protocol", {}).get("testExecutionCount") != 1:
         raise SystemExit("displayed Amazon V3 report must preserve the test-once gate")
+    for name, report in {
+        "million-scale ANN": million_scale,
+        "CTR scale": ctr_scale,
+        "CVR scale": cvr_scale,
+    }.items():
+        if report.get("dataOrigin") not in {"public", "official_public"}:
+            raise SystemExit(f"displayed {name} report must use public data")
+        if report.get("claimableOnlinePerformance") is not False:
+            raise SystemExit(f"displayed {name} report must preserve its offline boundary")
     if esmm.get("testOnceGate") != {
         "accessCount": 1,
         "policy": "one bundled evaluation after all checkpoints are frozen",

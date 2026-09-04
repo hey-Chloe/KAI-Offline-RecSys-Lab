@@ -6,7 +6,7 @@ Boundary: `PUBLIC OFFLINE DATA · LOCAL DEMO · NO PRODUCTION CLAIM`
 
 This module is a local integration and operability harness around existing
 public/offline artifacts. It is not deployed production infrastructure, does
-not use KAI business data, and does not write to the production Data Flywheel.
+not use private business data, and does not write to any production event store.
 
 ## What is implemented
 
@@ -70,7 +70,7 @@ In a second terminal:
 
 - `offline boundary verified: 7 registered sources`
 - Serving-specific automated tests: `10 passed`
-- Full directory test suite at final integration: `95 passed`
+- Full integrated test suite at final integration: `113 passed`
 - Real localhost HTTP acceptance:
   - profile update: success;
   - recommendation: HTTP 200 with three replayed candidates;

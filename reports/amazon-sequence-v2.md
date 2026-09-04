@@ -25,4 +25,4 @@ DIN minus Mean Pooling NDCG@100: +0.000682 ± 0.000047.
 - The frozen retriever seed is shared by all sequence runs; sequence uncertainty is measured over three training seeds only.
 - Three CPU/MPS-sized configurations are selected using dev DIN NDCG@100; test is opened once and never tunes the model.
 - A negative DIN result remains a valid outcome and will not be changed by rewriting the test or labels.
-- Offline public metrics do not establish online CTR, conversion, revenue, or KAI production impact.
+- Offline public metrics do not establish online CTR, conversion, revenue, or production impact.

@@ -2,7 +2,7 @@
 
 | Area | Status | Evidence boundary |
 |---|---|---|
-| Standalone repository | READY | Lab-only subtree history; no Compute, 0066, production application or business data copied |
+| Standalone repository | READY | Personal Lab-only history; no company production application or business data included |
 | Source ledger | READY | Amazon research-only/no assigned license; Criteo CC BY-NC-SA 4.0; Open Bandit CC BY 4.0 |
 | Python environment | READY | Pinned macOS arm64 PyTorch/scikit-learn/HNSW environment |
 | Retrieval/ANN/sequence code | READY | Popularity, ItemKNN, BPR, Two-Tower, exact/HNSW and target-aware attention |

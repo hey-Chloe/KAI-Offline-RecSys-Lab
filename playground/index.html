@@ -133,6 +133,37 @@
             <p class="analysis-note">5-core 切分没有真实冷启动 support，因此不伪造冷启动效果；同时间戳样本只从 cohort 分析排除，主测试人口保持完整。</p>
           </article>
         </div>
+
+        <section class="scale-evidence" aria-labelledby="scale-title">
+          <header class="scale-heading">
+            <div>
+              <p class="step-label">公开数据 · 规模化补充验证</p>
+              <h3 id="scale-title">从算法效果，走到系统规模</h3>
+            </div>
+            <p>主推荐效果仍以 <span id="scale-primary-catalog">冻结目录</span> 的协议为准；这里单独展示更大公开数据上的检索、点击与转化验证，不混写成线上业务结果。</p>
+          </header>
+          <div class="scale-grid">
+            <article class="scale-card">
+              <span class="scale-index">01 · ANN 检索</span>
+              <strong id="scale-ann-items">读取中…</strong>
+              <p>真实公开商品去重目录</p>
+              <dl><div><dt>ANN Recall@100</dt><dd id="scale-ann-recall">—</dd></div><div><dt>本机 p95</dt><dd id="scale-ann-p95">—</dd></div></dl>
+            </article>
+            <article class="scale-card">
+              <span class="scale-index">02 · CTR 预测</span>
+              <strong id="scale-ctr-rows">读取中…</strong>
+              <p>固定官方 parquet shard 全量行</p>
+              <dl><div><dt>DeepFM ROC-AUC</dt><dd id="scale-ctr-auc">—</dd></div><div><dt>LogLoss</dt><dd id="scale-ctr-logloss">—</dd></div></dl>
+            </article>
+            <article class="scale-card">
+              <span class="scale-index">03 · CVR / ESMM</span>
+              <strong id="scale-cvr-rows">读取中…</strong>
+              <p>含曝光、点击与转化标签的公开样本</p>
+              <dl><div><dt>CTCVR ROC-AUC</dt><dd id="scale-cvr-auc">—</dd></div><div><dt>相对独立塔 Δ</dt><dd id="scale-cvr-delta">—</dd></div></dl>
+            </article>
+          </div>
+          <p class="panel-footnote">以上数字均从仓库内已冻结 JSON artifact 动态读取。百万级实验只支持本地 CPU 检索规模与延迟陈述；CTR/CVR 只支持公开离线评估陈述。</p>
+        </section>
       </section>
 
       <section class="lesson" id="retrieval" aria-labelledby="retrieval-title">

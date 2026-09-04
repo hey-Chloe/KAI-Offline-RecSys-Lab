@@ -24,7 +24,7 @@ Status: `COMPLETE`; online-performance claim: `false`.
 | ESMM CTCVR | 0.841541 ± 0.000741 | 0.151314 ± 0.000185 | 0.039463 ± 0.000063 | 0.003202 ± 0.000419 |
 | ESMM post-click CVR | 0.823026 ± 0.001066 | 0.314712 ± 0.000530 | 0.093289 ± 0.000246 | 0.012140 ± 0.002072 |
 
-These are descriptive offline public-data measurements, not KAI production or online-lift evidence.
+These are descriptive offline public-data measurements, not production or online-lift evidence.
 
 ## Limitations
 
@@ -34,5 +34,5 @@ These are descriptive offline public-data measurements, not KAI production or on
 - Criteo anonymizes and subsamples the traffic, and contextual feature meanings are undisclosed.
 - Cost is transformed by the publisher and is not a real market price.
 - The publisher's legacy go.criteo.net archive link returned HTTP 404 on 2026-08-27; acquisition uses the same dataset in Criteo's official Hugging Face organization at a pinned revision.
-- Offline public-data metrics do not establish KAI production performance, online lift, or business impact.
+- Offline public-data metrics do not establish production performance, online lift, or business impact.
 - CC BY-NC-SA 4.0 limits this use to noncommercial purposes under its attribution and ShareAlike terms.
