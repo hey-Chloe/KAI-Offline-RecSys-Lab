@@ -1,0 +1,55 @@
+{
+  "experimentId": "criteo-ctr-complete-pinned-shard-scale-v2",
+  "source": {
+    "id": "criteo-1tb-click-logs",
+    "dataset": "Criteo 1TB Click Logs",
+    "publisher": "Criteo AI Lab",
+    "officialUrl": "https://ailab.criteo.com/download-criteo-1tb-click-logs-dataset/",
+    "officialRepository": "https://huggingface.co/datasets/criteo/CriteoClickLogs",
+    "termsUrl": "https://ailab.criteo.com/ressources/criteo-1tb-click-logs-dataset-for-mlperf/",
+    "terms": "Criteo official terms apply CC BY-NC-SA 4.0 and limit licensed use to noncommercial purposes with attribution and share-alike conditions.",
+    "license": "CC-BY-NC-SA-4.0",
+    "usage": "noncommercial_offline_research_only"
+  },
+  "dataset": {
+    "rawFile": "data/raw/criteo-ctr/day-2015-02-15-part-00079.parquet",
+    "expectedRows": 766864,
+    "rowLimit": null,
+    "samplingRule": "all physical rows from the pinned day=2015-02-15 part-00079 parquet shard; no label-conditioned sampling"
+  },
+  "split": {
+    "trainFraction": 0.7,
+    "devFraction": 0.15,
+    "semantics": "fixed contiguous source-order blocks; parquet conversion order was not independently audited and is not claimed chronological"
+  },
+  "preprocessing": {
+    "numeric": "log1p_nonnegative_then_train_zscore",
+    "categorical": "train_frequency_cap_then_oov_index_zero",
+    "minCategoryCount": 5,
+    "maxCategoriesPerFeature": 50000,
+    "fitScope": "train_only"
+  },
+  "protocol": {"seeds": [3407, 6502, 9109]},
+  "training": {
+    "device": "auto",
+    "epochs": 2,
+    "batchSize": 4096,
+    "learningRate": 0.001,
+    "weightDecay": 0.00001,
+    "selection": "minimum dev LogLoss checkpoint only; test never selects epochs or hyperparameters"
+  },
+  "models": {
+    "lr": {"implementation": "sparse first-order categorical embeddings plus numeric linear terms"},
+    "deepfm": {"embeddingDim": 8, "hiddenDims": [64, 32]},
+    "dcnv2": {"embeddingDim": 8, "crossDepth": 2, "hiddenDims": [64, 32]}
+  },
+  "metrics": ["ROC-AUC", "PR-AUC", "LogLoss", "Brier Score", "ECE"],
+  "limitations": [
+    "This run uses every row in one pinned official parquet shard, not the complete 1TB or 24-day corpus.",
+    "The parquet conversion order was not independently audited, so source-order blocks are not described as chronological.",
+    "Criteo states positive and negative examples were subsampled at different rates; raw probabilities are not population CTR without correction.",
+    "Hashed categorical feature semantics are undisclosed.",
+    "Offline public-data metrics do not establish online CTR lift, revenue lift, or KAI production performance.",
+    "CC BY-NC-SA 4.0 restricts use to noncommercial research under its terms."
+  ]
+}

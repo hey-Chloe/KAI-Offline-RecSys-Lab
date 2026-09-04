@@ -5,6 +5,9 @@ const state = {
   ctrReport: null,
   esmmReport: null,
   positionReport: null,
+  millionScaleReport: null,
+  ctrScaleReport: null,
+  cvrScaleReport: null,
   history: 0,
   retrievalModel: "itemKnn",
   retrievalMode: "exact",
@@ -387,6 +390,25 @@ function renderAmazonV3() {
   $("#e2e-cold-start").textContent = "新用户 0 · 无历史 0 · 未见商品 0";
 }
 
+function renderScaleEvidence() {
+  const ann = state.millionScaleReport.results.ann["100"];
+  const ctr = state.ctrScaleReport.results.summary.deepfm;
+  const cvr = state.cvrScaleReport.results.summary;
+  const esmmAuc = cvr.esmm.tasks.ctcvr.rocAuc.mean;
+  const independentAuc = cvr.naive_independent.tasks.ctcvr.rocAuc.mean;
+
+  $("#scale-primary-catalog").textContent = `${integer(state.retrievalReport.protocol.counts.trainCatalogItems)} 件商品`;
+  $("#scale-ann-items").textContent = `${integer(state.millionScaleReport.catalogAudit.uniqueItems)} 件商品`;
+  $("#scale-ann-recall").textContent = number(ann.annRecallAtK, 4);
+  $("#scale-ann-p95").textContent = `${number(ann.p95LatencyMs, 3)} ms`;
+  $("#scale-ctr-rows").textContent = `${integer(state.ctrScaleReport.dataset.rowsRead)} 条样本`;
+  $("#scale-ctr-auc").textContent = number(ctr.rocAuc.mean, 6);
+  $("#scale-ctr-logloss").textContent = number(ctr.logLoss.mean, 6);
+  $("#scale-cvr-rows").textContent = `${integer(state.cvrScaleReport.protocol.counts.allRows)} 条曝光`;
+  $("#scale-cvr-auc").textContent = number(esmmAuc, 6);
+  $("#scale-cvr-delta").textContent = `+${number(esmmAuc - independentAuc, 6)}`;
+}
+
 function positionKey() {
   if (state.positionMethod === "naive_bts") return "naive_bts";
   return state.clipping === "none"
@@ -460,14 +482,28 @@ async function initialize() {
       fetch(`${reportBase}/criteo-ctr-v1-results.json`),
       fetch(`${reportBase}/criteo-esmm-v1-results.json`),
       fetch(`${reportBase}/position-bias-open-bandit-full-ope-v1.json`),
+      fetch(`${reportBase}/amazon-million-scale-v1-results.json`),
+      fetch(`${reportBase}/criteo-ctr-scale-v2-results.json`),
+      fetch(`${reportBase}/criteo-attribution-cvr-esmm-v1-results.json`),
     ]);
     if (!responses.every((response) => response.ok)) {
       throw new Error("one or more local artifacts could not be loaded");
     }
-    [state.fixture, state.retrievalReport, state.amazonV3Report, state.ctrReport, state.esmmReport, state.positionReport] = await Promise.all(
+    [
+      state.fixture,
+      state.retrievalReport,
+      state.amazonV3Report,
+      state.ctrReport,
+      state.esmmReport,
+      state.positionReport,
+      state.millionScaleReport,
+      state.ctrScaleReport,
+      state.cvrScaleReport,
+    ] = await Promise.all(
       responses.map((response) => response.json()),
     );
     renderAmazonV3();
+    renderScaleEvidence();
     renderRetrieval();
     renderCtr();
     renderEsmm();

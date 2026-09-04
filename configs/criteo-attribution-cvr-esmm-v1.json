@@ -1,0 +1,66 @@
+{
+  "experimentId": "criteo-attribution-cvr-esmm-fixed-prefix-v1",
+  "seeds": [3407, 6502, 9109],
+  "source": {
+    "id": "criteo-attribution-modeling-bidding",
+    "dataset": "Criteo Attribution Modeling for Bidding Dataset",
+    "publisher": "Criteo AI Lab",
+    "officialUrl": "https://ailab.criteo.com/criteo-attribution-modeling-bidding-dataset/",
+    "officialRepository": "https://huggingface.co/datasets/criteo/criteo-attribution-dataset",
+    "officialRepositoryRevision": "904188a63cbad78bee43cd26ff5ee4ac77903986",
+    "termsUrl": "https://ailab.criteo.com/ressources/",
+    "terms": "Criteo publishes the dataset for research under CC BY-NC-SA 4.0; this experiment is noncommercial, offline, attributed research only.",
+    "license": "CC-BY-NC-SA-4.0",
+    "usage": "noncommercial_offline_research_only",
+    "officialFileSha256": "94ac7a465564349bc7ba008602211d5990a3c53cc133abc0aadef61ea2391a98"
+  },
+  "dataset": {
+    "rawFile": "data/raw/criteo-attribution/criteo_attribution_dataset.tsv.gz",
+    "rowLimit": 600000,
+    "samplingRule": "first 600000 physical rows from the publisher's timestamp-sorted official TSV.GZ; no label-conditioned sampling"
+  },
+  "split": {
+    "trainFraction": 0.7,
+    "devFraction": 0.15,
+    "testFraction": 0.15,
+    "semantics": "fixed contiguous timestamp-order blocks"
+  },
+  "preprocessing": {
+    "numeric": "log1p_nonnegative_then_train_zscore_with_prior_click_indicator",
+    "categorical": "train_frequency_cap_then_oov_zero",
+    "minCategoryCount": 5,
+    "maxCategoriesPerFeature": 20000,
+    "fitScope": "train_only"
+  },
+  "training": {
+    "device": "auto",
+    "epochs": 3,
+    "batchSize": 4096,
+    "learningRate": 0.001,
+    "weightDecay": 0.00001,
+    "selection": "dev-only minimum LogLoss; test never selects epochs or hyperparameters"
+  },
+  "models": {
+    "independent": {
+      "embeddingDim": 8,
+      "hiddenDims": [64, 32],
+      "ctrPopulation": "all impressions",
+      "cvrPopulation": "clicked impressions only"
+    },
+    "esmm": {
+      "embeddingDim": 8,
+      "hiddenDims": [64, 32],
+      "objectives": ["CTR", "CTCVR"]
+    }
+  },
+  "metrics": ["ROC-AUC", "PR-AUC", "LogLoss", "Brier Score", "ECE"],
+  "limitations": [
+    "This is a fixed 600000-row prefix, not the full 16468027-row public dataset.",
+    "The publisher's conversion label means a conversion within 30 days after an impression independently of last-click attribution; this benchmark defines CTCVR explicitly as click multiplied by conversion.",
+    "The fixed prefix contains repeated campaign/user timelines and is not an IID random sample; the split is deliberately temporal and may expose distribution shift.",
+    "User identity and all outcome-derived fields are excluded, but anonymized categorical meanings are undisclosed.",
+    "The independent baseline and ESMM are compact CPU/MPS-scale research implementations, not production serving models.",
+    "Offline public-data metrics do not establish KAI production, online lift, conversion lift, revenue, or business performance.",
+    "CC BY-NC-SA 4.0 restricts use to noncommercial purposes under its terms."
+  ]
+}

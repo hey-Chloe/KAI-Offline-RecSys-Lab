@@ -43,6 +43,34 @@ class NaivePostClickCVR(nn.Module):
         return self.output(self.tower(encoded)).squeeze(-1)
 
 
+class IndependentBinaryTower(nn.Module):
+    """Single-task binary tower used by the independent CTR/CVR baseline.
+
+    The pipeline deliberately instantiates two separate copies: CTR is trained
+    on all impressions, while CVR is trained only on clicked impressions.  The
+    class itself is label-agnostic so the different supervision populations
+    remain visible in the experiment code instead of being hidden here.
+    """
+
+    def __init__(
+        self,
+        schema: TabularSchema,
+        *,
+        embedding_dim: int = 8,
+        hidden_dims: Sequence[int] = (32, 16),
+        seed: int = DEFAULT_SEED,
+    ) -> None:
+        super().__init__()
+        torch.manual_seed(seed)
+        self.encoder = MixedFeatureEncoder(schema, embedding_dim=embedding_dim)
+        self.tower = FeedForwardTower(self.encoder.output_dim, hidden_dims)
+        self.output = nn.Linear(self.tower.output_dim, 1)
+
+    def forward(self, batch: TabularBatch) -> Tensor:
+        encoded = self.encoder(batch)
+        return self.output(self.tower(encoded)).squeeze(-1)
+
+
 def post_click_cvr_loss(logits: Tensor, clicked: Tensor, converted: Tensor) -> Tensor:
     if logits.ndim != 1 or clicked.shape != logits.shape or converted.shape != logits.shape:
         raise ValueError("logits, clicked and converted must be equally sized vectors")

@@ -1,0 +1,689 @@
+{
+  "claimableOnlinePerformance": false,
+  "dataOrigin": "public",
+  "devSelection": {
+    "candidateGeneratorDevMetrics": {
+      "100": {
+        "hitRate": 0.09857213195470212,
+        "mrr": 0.009644735356623592,
+        "ndcg": 0.02523207351517539,
+        "queryCount": 50775,
+        "recall": 0.09857213195470212
+      },
+      "20": {
+        "hitRate": 0.03426883308714919,
+        "mrr": 0.008256682790292642,
+        "ndcg": 0.013827824170103508,
+        "queryCount": 50775,
+        "recall": 0.03426883308714919
+      },
+      "50": {
+        "hitRate": 0.06292466765140325,
+        "mrr": 0.009140636594373728,
+        "ndcg": 0.01946356207927882,
+        "queryCount": 50775,
+        "recall": 0.06292466765140325
+      }
+    },
+    "candidates": [
+      {
+        "config": {
+          "attentionDim": 64,
+          "batchSize": 1024,
+          "embeddingDim": 64,
+          "epochs": 2,
+          "evaluationQueryBatchSize": 32,
+          "hiddenDim": 128,
+          "id": "pretrained-frozen-n2-e2",
+          "learningRate": 0.001,
+          "maxHistory": 100,
+          "negativesPerPositive": 2,
+          "trainItemEmbeddings": false
+        },
+        "dinDevMetrics": {
+          "100": {
+            "hitRate": 0.11090103397341211,
+            "mrr": 0.011389646929220482,
+            "ndcg": 0.02912922611840905,
+            "queryCount": 50775,
+            "recall": 0.11090103397341211
+          },
+          "20": {
+            "hitRate": 0.04234367306745446,
+            "mrr": 0.009837412926962982,
+            "ndcg": 0.01682442481115524,
+            "queryCount": 50775,
+            "recall": 0.04234367306745446
+          },
+          "50": {
+            "hitRate": 0.07592319054652881,
+            "mrr": 0.010893123947176717,
+            "ndcg": 0.023464454100015835,
+            "queryCount": 50775,
+            "recall": 0.07592319054652881
+          }
+        },
+        "elapsedSeconds": 193.8346318329859,
+        "epochLosses": [
+          0.5214604348472236,
+          0.4277810662577461
+        ],
+        "id": "pretrained-frozen-n2-e2",
+        "selectionValue": 0.02912922611840905
+      },
+      {
+        "config": {
+          "attentionDim": 64,
+          "batchSize": 1024,
+          "embeddingDim": 64,
+          "epochs": 2,
+          "evaluationQueryBatchSize": 32,
+          "hiddenDim": 128,
+          "id": "pretrained-finetune-n2-e2",
+          "learningRate": 0.0005,
+          "maxHistory": 100,
+          "negativesPerPositive": 2,
+          "trainItemEmbeddings": true
+        },
+        "dinDevMetrics": {
+          "100": {
+            "hitRate": 0.12049236829148204,
+            "mrr": 0.016651564421570796,
+            "ndcg": 0.035610849467813746,
+            "queryCount": 50775,
+            "recall": 0.12049236829148204
+          },
+          "20": {
+            "hitRate": 0.05540128015755785,
+            "mrr": 0.015137067519212384,
+            "ndcg": 0.02384134605723257,
+            "queryCount": 50775,
+            "recall": 0.05540128015755785
+          },
+          "50": {
+            "hitRate": 0.08992614475627769,
+            "mrr": 0.01621480351932132,
+            "ndcg": 0.03065267323122265,
+            "queryCount": 50775,
+            "recall": 0.08992614475627769
+          }
+        },
+        "elapsedSeconds": 184.59684229199775,
+        "epochLosses": [
+          0.5419506831024413,
+          0.39418317715123363
+        ],
+        "id": "pretrained-finetune-n2-e2",
+        "selectionValue": 0.035610849467813746
+      },
+      {
+        "config": {
+          "attentionDim": 64,
+          "batchSize": 1024,
+          "embeddingDim": 64,
+          "epochs": 3,
+          "evaluationQueryBatchSize": 32,
+          "hiddenDim": 128,
+          "id": "pretrained-frozen-n4-e3",
+          "learningRate": 0.001,
+          "maxHistory": 100,
+          "negativesPerPositive": 4,
+          "trainItemEmbeddings": false
+        },
+        "dinDevMetrics": {
+          "100": {
+            "hitRate": 0.11131462333825702,
+            "mrr": 0.011854837400710864,
+            "ndcg": 0.029642947461473605,
+            "queryCount": 50775,
+            "recall": 0.11131462333825702
+          },
+          "20": {
+            "hitRate": 0.04317085179714426,
+            "mrr": 0.010297491342872302,
+            "ndcg": 0.01738461326391923,
+            "queryCount": 50775,
+            "recall": 0.04317085179714426
+          },
+          "50": {
+            "hitRate": 0.07741999015263418,
+            "mrr": 0.011374408997866679,
+            "ndcg": 0.024155639319696644,
+            "queryCount": 50775,
+            "recall": 0.07741999015263418
+          }
+        },
+        "elapsedSeconds": 189.04956620797748,
+        "epochLosses": [
+          0.4505639297844067,
+          0.3532707902156003,
+          0.33936071687693586
+        ],
+        "id": "pretrained-frozen-n4-e3",
+        "selectionValue": 0.029642947461473605
+      }
+    ],
+    "configCanonicalSha256": "c179f5b45b510009d6418fefd5644f3bed7bf62eade58e240865667866649c93",
+    "experimentId": "amazon23-industrial-sequence-pretrained-v2",
+    "metadataFeatureSha256": "955341442a81d1dcef1b335127ed934c36d78b9d2fbe65f13587a11485bbb473",
+    "retrieverCheckpointSha256": "e221fbe6be56c21c2444c555eccb4f7e924a66ee09e74459a1be1fb1e4fcf256",
+    "schemaVersion": 1,
+    "selectedCandidateId": "pretrained-finetune-n2-e2",
+    "selectedConfig": {
+      "attentionDim": 64,
+      "batchSize": 1024,
+      "embeddingDim": 64,
+      "epochs": 2,
+      "evaluationQueryBatchSize": 32,
+      "hiddenDim": 128,
+      "id": "pretrained-finetune-n2-e2",
+      "learningRate": 0.0005,
+      "maxHistory": 100,
+      "negativesPerPositive": 2,
+      "trainItemEmbeddings": true
+    },
+    "selectionMetric": "din_ndcg@100",
+    "selectionSeed": 3407,
+    "splitSha256": "0cc0485982d5974743150609976ca3606d84c688720ed773673f3e07a8ea996c",
+    "status": "DEV_SELECTION_COMPLETE_TEST_UNSEEN",
+    "testMetrics": null
+  },
+  "evidence": {
+    "configSha256": "8c6a085cd2c83dc5cffc4fc64e140c81a0b5b56a45de81441fc7b59f4a1f230f",
+    "datasetFiles": [
+      {
+        "bytes": 7129893,
+        "name": "Industrial_and_Scientific.train.csv.gz",
+        "role": "train",
+        "sha256": "132fea283cae097a9a4980ce6d4b44371f8b2bb38763c620dcb9458962347f0f"
+      },
+      {
+        "bytes": 3473533,
+        "name": "Industrial_and_Scientific.valid.csv.gz",
+        "role": "dev",
+        "sha256": "41414bdd6308edd619989fc347864ac6c359e1de4868cb719dd13889ca105877"
+      },
+      {
+        "bytes": 3747446,
+        "name": "Industrial_and_Scientific.test.csv.gz",
+        "role": "test",
+        "sha256": "4c5479c4340ea6aef9bc39fe9a54782cfa81046f10a844c4955df35678ebd340"
+      },
+      {
+        "bytes": 281523932,
+        "name": "meta_Industrial_and_Scientific.jsonl.gz",
+        "role": "item_metadata",
+        "sha256": "0beb251cec166347a3ec3ef23e55ec89f7fb27a6e8e9a0737d6b34cdc184ebcb"
+      }
+    ],
+    "metadataFeatureSha256": "955341442a81d1dcef1b335127ed934c36d78b9d2fbe65f13587a11485bbb473",
+    "retrieverCheckpoint": {
+      "bytes": 32486890,
+      "path": "artifacts/amazon-two-tower-v2/checkpoints/metadata-d64-uniform-seed-3407.pt",
+      "sha256": "e221fbe6be56c21c2444c555eccb4f7e924a66ee09e74459a1be1fb1e4fcf256"
+    },
+    "selectionManifestSha256": "e85d06b6a7b82fca2934eac92cb519ee57b83e5840461a80ac48ec54952c9cc9",
+    "splitSha256": "0cc0485982d5974743150609976ca3606d84c688720ed773673f3e07a8ea996c"
+  },
+  "experimentId": "amazon23-industrial-sequence-pretrained-v2",
+  "limitations": [
+    "Amazon review/rating histories are public interaction proxies, not impression/click/order logs.",
+    "The provider has not assigned a dataset license; raw data, checkpoints, and per-user outputs remain local ignored artifacts.",
+    "The sequence models rerank a frozen metadata Two-Tower Top-200 and cannot recover targets outside that set.",
+    "The frozen retriever seed is shared by all sequence runs; sequence uncertainty is measured over three training seeds only.",
+    "Three CPU/MPS-sized configurations are selected using dev DIN NDCG@100; test is opened once and never tunes the model.",
+    "A negative DIN result remains a valid outcome and will not be changed by rewriting the test or labels.",
+    "Offline public metrics do not establish online CTR, conversion, revenue, or KAI production impact."
+  ],
+  "outcome": "POSITIVE_DIN_TEST_IMPROVEMENT",
+  "protocol": {
+    "candidateCount": 200,
+    "catalogItems": 25754,
+    "counts": {
+      "devEvaluationUsers": 50775,
+      "devRows": 50985,
+      "testEvaluationUsers": 50653,
+      "testRows": 50985,
+      "trainCatalogItems": 25754,
+      "trainRows": 310977
+    },
+    "sameCandidatesNegativesAndInitializationAcrossModels": true,
+    "seeds": [
+      3407,
+      6502,
+      9109
+    ],
+    "selectionMetric": "din_ndcg@100",
+    "selectionSeed": 3407,
+    "selectionSplit": "dev",
+    "testDataUsedForSelection": false,
+    "testEvaluationUsers": 50653,
+    "testExecutionCount": 1,
+    "testOpenedAfterSelectionFrozen": true,
+    "testSeeds": [
+      3407,
+      6502,
+      9109
+    ]
+  },
+  "resultSha256": "be8fe1bb43959de14dbb543c3b5767d520c04dd7a2d4e03ba632988cd3a1250c",
+  "results": {
+    "candidateGeneration": {
+      "name": "frozen_metadata_two_tower_v2",
+      "targetInjected": false,
+      "testMetrics": {
+        "100": {
+          "hitRate": 0.08366730499674255,
+          "mrr": 0.00778555272633465,
+          "ndcg": 0.02102618841605414,
+          "queryCount": 50653,
+          "recall": 0.08366730499674255
+        },
+        "20": {
+          "hitRate": 0.02819181489743944,
+          "mrr": 0.00658113429455079,
+          "ndcg": 0.011178374093433476,
+          "queryCount": 50653,
+          "recall": 0.02819181489743944
+        },
+        "50": {
+          "hitRate": 0.053284109529544155,
+          "mrr": 0.007360689592748734,
+          "ndcg": 0.016122255536340415,
+          "queryCount": 50653,
+          "recall": 0.053284109529544155
+        }
+      }
+    },
+    "comparison": {
+      "contrast": "din_minus_mean_pooling_paired_by_seed",
+      "delta": {
+        "100": {
+          "hitRate": {
+            "mean": 0.001342467376068542,
+            "std": 0.00011623873368905072
+          },
+          "mrr": {
+            "mean": 0.0004627040832697448,
+            "std": 7.018271118292608e-05
+          },
+          "ndcg": {
+            "mean": 0.0006819049205308292,
+            "std": 4.7082865336218955e-05
+          },
+          "recall": {
+            "mean": 0.001342467376068542,
+            "std": 0.00011623873368905072
+          }
+        },
+        "20": {
+          "hitRate": {
+            "mean": 0.0019478938397857308,
+            "std": 5.1816660243955245e-05
+          },
+          "mrr": {
+            "mean": 0.0004671923224198622,
+            "std": 7.271109936873808e-05
+          },
+          "ndcg": {
+            "mean": 0.0007734799295768905,
+            "std": 5.497869807990037e-05
+          },
+          "recall": {
+            "mean": 0.0019478938397857308,
+            "std": 5.1816660243955245e-05
+          }
+        },
+        "50": {
+          "hitRate": {
+            "mean": 0.0026257082502517126,
+            "std": 0.0005544234239452915
+          },
+          "mrr": {
+            "mean": 0.00048592853122193976,
+            "std": 6.174268636832136e-05
+          },
+          "ndcg": {
+            "mean": 0.0009030186801778188,
+            "std": 5.2664946739656956e-05
+          },
+          "recall": {
+            "mean": 0.0026257082502517126,
+            "std": 0.0005544234239452915
+          }
+        }
+      },
+      "outcome": "POSITIVE_DIN_TEST_IMPROVEMENT"
+    },
+    "models": {
+      "din": {
+        "perSeed": {
+          "3407": {
+            "elapsedSeconds": 207.8875262090005,
+            "epochLosses": [
+              0.5419496749363405,
+              0.3941784916686503
+            ],
+            "metrics": {
+              "100": {
+                "hitRate": 0.10453477582769036,
+                "mrr": 0.014113506106108354,
+                "ndcg": 0.03061261122841641,
+                "queryCount": 50653,
+                "recall": 0.10453477582769036
+              },
+              "20": {
+                "hitRate": 0.04821037253469686,
+                "mrr": 0.012812031607642965,
+                "ndcg": 0.02044869072981078,
+                "queryCount": 50653,
+                "recall": 0.04821037253469686
+              },
+              "50": {
+                "hitRate": 0.07788284997927072,
+                "mrr": 0.013737375887305284,
+                "ndcg": 0.026301988731302996,
+                "queryCount": 50653,
+                "recall": 0.07788284997927072
+              }
+            }
+          },
+          "6502": {
+            "elapsedSeconds": 198.82634529098868,
+            "epochLosses": [
+              0.5436037113682748,
+              0.39469022714301966
+            ],
+            "metrics": {
+              "100": {
+                "hitRate": 0.10451503366039523,
+                "mrr": 0.0143565953781725,
+                "ndcg": 0.030822821003189196,
+                "queryCount": 50653,
+                "recall": 0.10451503366039523
+              },
+              "20": {
+                "hitRate": 0.048309083371172484,
+                "mrr": 0.013054255712395822,
+                "ndcg": 0.020672348125942347,
+                "queryCount": 50653,
+                "recall": 0.048309083371172484
+              },
+              "50": {
+                "hitRate": 0.07766568613902435,
+                "mrr": 0.01397511535114488,
+                "ndcg": 0.026473081049743365,
+                "queryCount": 50653,
+                "recall": 0.07766568613902435
+              }
+            }
+          },
+          "9109": {
+            "elapsedSeconds": 182.75279774999944,
+            "epochLosses": [
+              0.5489974668687767,
+              0.3996266031542016
+            ],
+            "metrics": {
+              "100": {
+                "hitRate": 0.10392276864154147,
+                "mrr": 0.014162612169800828,
+                "ndcg": 0.030552415709224286,
+                "queryCount": 50653,
+                "recall": 0.10392276864154147
+              },
+              "20": {
+                "hitRate": 0.04799320869445048,
+                "mrr": 0.012862532390413128,
+                "ndcg": 0.020440947792886074,
+                "queryCount": 50653,
+                "recall": 0.04799320869445048
+              },
+              "50": {
+                "hitRate": 0.07766568613902435,
+                "mrr": 0.013787212493649757,
+                "ndcg": 0.026292831773244738,
+                "queryCount": 50653,
+                "recall": 0.07766568613902435
+              }
+            }
+          }
+        },
+        "testSummary": {
+          "100": {
+            "hitRate": {
+              "mean": 0.1043241927098757,
+              "std": 0.0002839640825537293
+            },
+            "mrr": {
+              "mean": 0.01421090455136056,
+              "std": 0.0001049514622280293
+            },
+            "ndcg": {
+              "mean": 0.03066261598027663,
+              "std": 0.000115916959235233
+            },
+            "queryCount": 50653,
+            "recall": {
+              "mean": 0.1043241927098757,
+              "std": 0.0002839640825537293
+            }
+          },
+          "20": {
+            "hitRate": {
+              "mean": 0.0481708882001066,
+              "std": 0.00013194307448563826
+            },
+            "mrr": {
+              "mean": 0.012909606570150639,
+              "std": 0.00010433955155900141
+            },
+            "ndcg": {
+              "mean": 0.020520662216213067,
+              "std": 0.0001073047053204238
+            },
+            "queryCount": 50653,
+            "recall": {
+              "mean": 0.0481708882001066,
+              "std": 0.00013194307448563826
+            }
+          },
+          "50": {
+            "hitRate": {
+              "mean": 0.07773807408577314,
+              "std": 0.00010237201604448436
+            },
+            "mrr": {
+              "mean": 0.01383323457736664,
+              "std": 0.00010236710835327766
+            },
+            "ndcg": {
+              "mean": 0.0263559671847637,
+              "std": 8.28963428951145e-05
+            },
+            "queryCount": 50653,
+            "recall": {
+              "mean": 0.07773807408577314,
+              "std": 0.00010237201604448436
+            }
+          }
+        }
+      },
+      "meanPooling": {
+        "perSeed": {
+          "3407": {
+            "elapsedSeconds": 45.52005204197485,
+            "epochLosses": [
+              0.5471034911096229,
+              0.40306153688653734
+            ],
+            "metrics": {
+              "100": {
+                "hitRate": 0.10307385544785107,
+                "mrr": 0.013747549174711436,
+                "ndcg": 0.02998726081323948,
+                "queryCount": 50653,
+                "recall": 0.10307385544785107
+              },
+              "20": {
+                "hitRate": 0.04621641363788917,
+                "mrr": 0.012445534661757662,
+                "ndcg": 0.019748344894414908,
+                "queryCount": 50653,
+                "recall": 0.04621641363788917
+              },
+              "50": {
+                "hitRate": 0.07464513454287011,
+                "mrr": 0.013337973448836318,
+                "ndcg": 0.025366866274521546,
+                "queryCount": 50653,
+                "recall": 0.07464513454287011
+              }
+            }
+          },
+          "6502": {
+            "elapsedSeconds": 49.63441550001153,
+            "epochLosses": [
+              0.548468571420022,
+              0.40292982753687073
+            ],
+            "metrics": {
+              "100": {
+                "hitRate": 0.10313308194973644,
+                "mrr": 0.013826323686642434,
+                "ndcg": 0.030082202252389077,
+                "queryCount": 50653,
+                "recall": 0.10313308194973644
+              },
+              "20": {
+                "hitRate": 0.04633486664165992,
+                "mrr": 0.012518668906548921,
+                "ndcg": 0.019839442035882632,
+                "queryCount": 50653,
+                "recall": 0.04633486664165992
+              },
+              "50": {
+                "hitRate": 0.07577043807869228,
+                "mrr": 0.013435766734871565,
+                "ndcg": 0.025644315680259554,
+                "queryCount": 50653,
+                "recall": 0.07577043807869228
+              }
+            }
+          },
+          "9109": {
+            "elapsedSeconds": 45.99598170799436,
+            "epochLosses": [
+              0.5540207287256476,
+              0.40857982921528907
+            ],
+            "metrics": {
+              "100": {
+                "hitRate": 0.10273823860383392,
+                "mrr": 0.013670728542918578,
+                "ndcg": 0.029872670113608845,
+                "queryCount": 50653,
+                "recall": 0.10273823860383392
+              },
+              "20": {
+                "hitRate": 0.046117702801413536,
+                "mrr": 0.012363039174885746,
+                "ndcg": 0.01965375992961099,
+                "queryCount": 50653,
+                "recall": 0.046117702801413536
+              },
+              "50": {
+                "hitRate": 0.07492152488500188,
+                "mrr": 0.013268177954726219,
+                "ndcg": 0.02534766355897654,
+                "queryCount": 50653,
+                "recall": 0.07492152488500188
+              }
+            }
+          }
+        },
+        "testSummary": {
+          "100": {
+            "hitRate": {
+              "mean": 0.10298172533380713,
+              "std": 0.00017386064416879802
+            },
+            "mrr": {
+              "mean": 0.013748200468090816,
+              "std": 6.352312085590739e-05
+            },
+            "ndcg": {
+              "mean": 0.029980711059745802,
+              "std": 8.566642184884189e-05
+            },
+            "queryCount": 50653,
+            "recall": {
+              "mean": 0.10298172533380713,
+              "std": 0.00017386064416879802
+            }
+          },
+          "20": {
+            "hitRate": {
+              "mean": 0.046222994360320874,
+              "std": 8.877879930265561e-05
+            },
+            "mrr": {
+              "mean": 0.012442414247730777,
+              "std": 6.357387347101208e-05
+            },
+            "ndcg": {
+              "mean": 0.019747182286636175,
+              "std": 7.580886003629513e-05
+            },
+            "queryCount": 50653,
+            "recall": {
+              "mean": 0.046222994360320874,
+              "std": 8.877879930265561e-05
+            }
+          },
+          "50": {
+            "hitRate": {
+              "mean": 0.07511236583552143,
+              "std": 0.000478812568221201
+            },
+            "mrr": {
+              "mean": 0.0133473060461447,
+              "std": 6.873535158874008e-05
+            },
+            "ndcg": {
+              "mean": 0.02545294850458588,
+              "std": 0.00013554392403710466
+            },
+            "queryCount": 50653,
+            "recall": {
+              "mean": 0.07511236583552143,
+              "std": 0.000478812568221201
+            }
+          }
+        }
+      }
+    }
+  },
+  "schemaVersion": 1,
+  "selectedCandidate": {
+    "attentionDim": 64,
+    "batchSize": 1024,
+    "embeddingDim": 64,
+    "epochs": 2,
+    "evaluationQueryBatchSize": 32,
+    "hiddenDim": 128,
+    "id": "pretrained-finetune-n2-e2",
+    "learningRate": 0.0005,
+    "maxHistory": 100,
+    "negativesPerPositive": 2,
+    "trainItemEmbeddings": true
+  },
+  "source": {
+    "id": "mcauley-lab-amazon-reviews-2023",
+    "interactionMeaning": "review or rating interaction proxy; not impression or click",
+    "name": "Amazon Reviews'23 Industrial_and_Scientific official 5-core",
+    "officialUrl": "https://amazon-reviews-2023.github.io/main.html",
+    "terms": "license not assigned by provider; isolated non-commercial research only; no raw-data redistribution"
+  },
+  "status": "COMPLETE"
+}

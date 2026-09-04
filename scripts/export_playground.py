@@ -17,6 +17,9 @@ REPORTS = (
     "criteo-ctr-v1-results.json",
     "criteo-esmm-v1-results.json",
     "position-bias-open-bandit-full-ope-v1.json",
+    "amazon-million-scale-v1-results.json",
+    "criteo-ctr-scale-v2-results.json",
+    "criteo-attribution-cvr-esmm-v1-results.json",
 )
 
 

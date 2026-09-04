@@ -15,7 +15,7 @@ Important rights boundary: the repository code is MIT licensed, but the
 dataset maintainer explicitly states that they are not in a position to assign
 a dataset license and that the data is made available primarily for research.
 This experiment therefore treats the files as research-only public inputs,
-does not redistribute raw rows, and does not use them in production or the KAI
+does not redistribute raw rows, and does not use them in a production
 business flywheel.
 
 Dataset terms evidence:
@@ -23,7 +23,7 @@ https://huggingface.co/datasets/McAuley-Lab/Amazon-Reviews-2023/discussions/1
 
 The interaction is a review/rating proxy. It is not an impression, click, or
 verified order event. Metrics from this experiment are offline public-data
-metrics only and are not evidence of online or KAI Compute performance.
+metrics only and are not evidence of online or production performance.
 
 The selected catalog is tens of thousands of items, not one million. No
 million-scale claim is permitted from this run.

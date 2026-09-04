@@ -55,7 +55,7 @@ and limitations are in `criteo-esmm-v1-results.json`.
 
 This is a descriptive public-data offline result on a 200,000-row prefix, not
 the full 16.5M impressions. It does not establish causal attribution, online
-CVR lift, revenue lift, advertising deployment, or KAI production performance.
+CVR lift, revenue lift, advertising deployment, or production performance.
 The first prefix contains no view-through conversion rows after applying the
 registered CTCVR definition; the loader's separation of raw conversion from
 CTCVR is covered by synthetic contract tests, not claimed as a measured cohort.

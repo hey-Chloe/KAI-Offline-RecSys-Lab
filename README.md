@@ -7,20 +7,20 @@
 Independent public-data research for end-to-end retrieval/ranking, CTR,
 post-click conversion, position-bias evaluation and value-aware ranking.
 
-Canonical repository: `hey-Chloe/KAI-Offline-RecSys-Lab`. The project was
-extracted with its Lab-specific Git history; see `PROVENANCE.md`.
+Canonical personal repository: `hey-Chloe/KAI-Offline-RecSys-Lab`. Its focused
+Lab history and later public-scale extensions are documented in `PROVENANCE.md`.
 
 ## Truth boundary
 
-- This standalone repository contains no Compute Production, migration 0066,
-  Data Flywheel, frozen Compute Ranking benchmark or marketplace code.
+- This is a standalone personal research project. It contains no company
+  backend, production application, business dataset or marketplace code.
 - Only `public` and explicitly labeled `synthetic` test data are accepted.
 - Synthetic fixtures validate code paths only. They are never reported as public
   benchmark or production results.
 - Raw third-party datasets and trained artifacts are ignored by Git. Acquisition
   requires a captured dataset-specific usage record in `sources/source-ledger.json`.
 - No offline result is evidence of online CTR, conversion lift, revenue lift or
-  KAI Compute marketplace performance.
+  production performance.
 
 ## Workstreams
 
@@ -54,10 +54,21 @@ chronology, and Open Bandit uses a fixed timestamp cutoff.
 - Criteo Attribution: a fixed 200,000-row impression population with click and
   conversion labels, naive clicked-only CVR and ESMM, three seeds, train-only
   preprocessing and a single frozen test opening.
+- Amazon Reviews'23 million-scale extension: 1,253,672 unique public item IDs
+  from `Industrial_and_Scientific` and `Amazon_Fashion`, evaluated as a local
+  CPU-only HNSW scalability protocol. This is a systems measurement, not a
+  recommendation-quality or production-SLO claim.
+- Criteo CTR scale extension: the complete pinned 766,864-row official parquet
+  shard, with the original LR / DeepFM / DCNv2 feature and seed parity.
+- Criteo Attribution CVR/ESMM: 600,000 fixed, time-ordered impression rows from
+  a source that contains both click and conversion labels. Naive post-click CVR
+  is compared with ESMM without treating clicked-only data as the exposure
+  population.
 
 The tracked JSON reports include source terms, raw file hashes, config/split
 hashes, exact row counts, seeds, metrics and limitations. Raw data and model
-indexes remain ignored.
+indexes remain ignored. The current extension is summarized in
+`reports/industrial-recsys-extension-v1.md`.
 
 ## Local verification
 
@@ -79,6 +90,20 @@ and writes an ignored `artifacts/synthetic-smoke.json`. It is an integration
 check, not a benchmark result. `make verify-public` verifies provenance and
 reproducibility fields in executed public reports; it does not rerun training.
 
+## Local serving rehearsal
+
+Run `make serve-local`, then in another terminal run `make serve-smoke`. The
+service listens on `http://127.0.0.1:4280` and provides an artifact-verified,
+local-only rehearsal of profile/feature updates, stable A/B assignment,
+idempotent impression/click/conversion events, monitoring, model activation,
+rollback and threshold-triggered automatic rollback.
+
+This harness is intentionally not a production recommendation platform. It has
+no external API, distributed feature store, production auth, real traffic or
+business-data write. The current public CTR artifacts do not contain a
+deployable row-level checkpoint, so the API returns `ctrScore: null` rather than
+inventing a prediction.
+
 ## Local recruiting playground
 
 Run `make playground`, then open `http://127.0.0.1:4190/playground/`. The
@@ -94,6 +119,7 @@ the self-contained Playground after its truth-boundary verifier passes.
 The public deployment above was anonymously verified over HTTPS after the
 standalone repository handoff.
 
-The Amazon catalog in this version has 25,754 items. It supports a measured
-tens-of-thousands full-catalog and ANN evaluation claim, not a million-item
-retrieval claim.
+The primary Amazon recommendation-quality benchmark remains the frozen 25,754
+item catalog. The separate 1,253,672-item extension supports a measured
+million-item embedding/HNSW scalability claim only. It does not turn the frozen
+quality result into a million-item relevance experiment.

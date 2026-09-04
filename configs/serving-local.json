@@ -1,0 +1,66 @@
+{
+  "schemaVersion": 1,
+  "dataBoundary": "public-offline-local-demo",
+  "productionClaim": false,
+  "productionFlywheel": false,
+  "experimentRoot": "..",
+  "stateDir": "artifacts/serving-local",
+  "assignmentSalt": "kai-offline-recsys-local-demo-v1",
+  "activeModel": "itemknn-replay-v1",
+  "server": {
+    "host": "127.0.0.1",
+    "port": 4280
+  },
+  "models": {
+    "popularity-replay-v1": {
+      "productionClaim": false,
+      "retriever": "playground_replay",
+      "algorithm": "popularity",
+      "ranking": "preserve_retrieval_order",
+      "ctrArtifactAvailable": false,
+      "artifact": {
+        "path": "playground/data/demo-fixtures.json",
+        "sha256": "459cce3b02c787bf1621bfcb298c97a0547e5ca2992bbbb4a02fc6b90b857643"
+      }
+    },
+    "itemknn-replay-v1": {
+      "productionClaim": false,
+      "retriever": "playground_replay",
+      "algorithm": "itemKnn",
+      "ranking": "preserve_retrieval_order",
+      "ctrArtifactAvailable": false,
+      "artifact": {
+        "path": "playground/data/demo-fixtures.json",
+        "sha256": "459cce3b02c787bf1621bfcb298c97a0547e5ca2992bbbb4a02fc6b90b857643"
+      }
+    },
+    "two-tower-trace-v2-seed-3407": {
+      "productionClaim": false,
+      "retriever": "two_tower_trace_replay",
+      "ranking": "preserve_retrieval_order",
+      "ctrArtifactAvailable": false,
+      "artifact": {
+        "path": "artifacts/amazon-two-tower-v2/traces/test-top100-seed-3407.jsonl.gz",
+        "sha256": "57747b2765f2e85bdd0ba7263b85d5626b4921978da873e1f65a95fe5c748763"
+      }
+    }
+  },
+  "experiments": {
+    "retrieval-replay-ab-v1": {
+      "variants": [
+        {"name": "popularity", "modelVersion": "popularity-replay-v1", "weight": 50},
+        {"name": "itemknn", "modelVersion": "itemknn-replay-v1", "weight": 50}
+      ]
+    }
+  },
+  "monitoring": {
+    "driftFeatureKeys": ["region", "device"],
+    "missingRateThreshold": 0.5,
+    "autoRollback": {
+      "enabled": true,
+      "minRequests": 20,
+      "errorRateThreshold": 0.2,
+      "p95LatencyMsThreshold": 500.0
+    }
+  }
+}

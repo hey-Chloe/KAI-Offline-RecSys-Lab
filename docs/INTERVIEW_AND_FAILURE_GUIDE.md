@@ -53,7 +53,7 @@ because monotonic calibration may not improve ordering.
 
 ### What is the biggest remaining production gap?
 
-Offline public datasets do not provide KAI's real exposure, selection, order,
+Offline public datasets do not provide real business exposure, selection, order,
 fulfillment, or settlement feedback. Online logging, delayed-label handling,
 drift monitoring, and controlled experiments remain outside this lab.
 

@@ -1,21 +1,21 @@
 # Repository provenance
 
-This is the user-owned standalone repository for KAI Offline RecSys Lab.
+This is the user-owned canonical repository for KAI Offline RecSys Lab.
 
 - Owner: `hey-Chloe`
-- Source repository: `mandow123/zod`
-- Source canonical commit: `ee2df28dc1f2c20bb4ca85b32e78145252eeb8d4`
-- Source pull request: `mandow123/zod#16`
-- Source product approval: `PM-20260827-001`
-- Extraction method: `git subtree split --prefix=experiments/offline-recsys-lab`
-- Initial subtree commit: `710f0b296943ffc2922cc27eb330fe7d1187deee`
+- Repository: `hey-Chloe/KAI-Offline-RecSys-Lab`
+- Public-data V1 commit: `95491d7`
+- Metadata Two-Tower V2 commit: `9da6f31`
+- Unified offline funnel V3 commit: `710f0b2`
+- Public-scale extension commit: `a02229c`
 
-The subtree split preserves the Lab-specific history while excluding Compute
-Production, migration 0066, the frozen Compute benchmark, backend/mobile/admin
-applications, payment code and business data.
+The Git history is scoped to the recommendation research lab. A later personal
+development line added million-item ANN, larger CTR/CVR experiments and local
+serving rehearsal, then was consolidated into this canonical repository.
 
-The source monorepo remains historical provenance. This standalone repository
-is the canonical home for future Offline RecSys Lab development.
+No company backend, application code, payment code, private inventory,
+interaction log or business data is included. This repository is the canonical
+home for future Offline RecSys Lab development.
 
 Raw third-party datasets, model checkpoints, vector indexes, user/item traces,
 credentials and local runtime artifacts are not redistributed. Dataset terms

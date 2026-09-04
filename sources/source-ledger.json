@@ -6,9 +6,9 @@
       "id": "amazon-reviews-2023",
       "origin": "public",
       "officialUrl": "https://amazon-reviews-2023.github.io/main.html",
-      "tasks": ["retrieval", "sequential_recommendation"],
+      "tasks": ["retrieval", "sequential_recommendation", "million_item_ann_scalability"],
       "usageStatus": "research_only_license_not_assigned_by_dataset_provider",
-      "notes": "Provider discussion says the data is primarily for research and that the provider cannot assign a dataset license. Raw rows are not redistributed. Review interactions are not impression or click labels."
+      "notes": "Provider discussion says the data is primarily for research and that the provider cannot assign a dataset license. Raw rows, million-scale item embeddings, and HNSW indexes are not redistributed. Review interactions are not impression or click labels. Million-item evaluation is scalability-only and does not claim recommendation quality."
     },
     {
       "id": "criteo-display-advertising",
@@ -30,9 +30,10 @@
       "officialUrl": "https://ailab.criteo.com/criteo-attribution-modeling-bidding-dataset/",
       "publisherMirror": "https://huggingface.co/datasets/criteo/criteo-attribution-dataset",
       "pinnedMirrorRevision": "904188a63cbad78bee43cd26ff5ee4ac77903986",
-      "tasks": ["impression_level_ctr", "ctcvr", "post_click_cvr", "esmm"],
+      "officialFileSha256": "94ac7a465564349bc7ba008602211d5990a3c53cc133abc0aadef61ea2391a98",
+      "tasks": ["impression_level_ctr", "ctr", "ctcvr", "post_click_cvr", "esmm"],
       "usageStatus": "research_only_cc_by_nc_sa_4_0_publisher_mirror",
-      "notes": "One row is one impression with click and conversion labels. The legacy go.criteo.net archive returned HTTP 404 during the 2026-08-27 audit, so acquisition is pinned to Criteo's verified Hugging Face organization and revision. Raw rows are not redistributed."
+      "notes": "Each row is an impression with click and 30-day conversion labels. Acquisition is pinned to Criteo's verified Hugging Face organization and revision after the legacy archive returned HTTP 404. CTCVR is explicitly click times conversion; identity and outcome-derived fields are excluded from model features. Raw rows are not redistributed."
     },
     {
       "id": "ali-ccp",

@@ -165,7 +165,7 @@ This delivery establishes reproducible public offline experiments for:
 - IPS/SNIPS/clipping validity analysis with ESS and per-position diagnostics.
 
 It does not establish million-item retrieval, online CTR/CVR lift, production
-recommendation quality, advertising-system deployment, KAI business impact or
+recommendation quality, advertising-system deployment, business impact or
 Data Flywheel readiness. Public/raw data and model artifacts remain physically
 isolated from Production and ignored by Git.
 

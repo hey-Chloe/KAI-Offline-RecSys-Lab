@@ -1,0 +1,509 @@
+{
+  "claimableOnlinePerformance": false,
+  "dataOrigin": "public",
+  "dataset": {
+    "positiveRows": 24768,
+    "rowsRead": 766864,
+    "samplingRule": "all physical rows from the pinned day=2015-02-15 part-00079 parquet shard; no label-conditioned sampling",
+    "scope": "complete_pinned_official_parquet_shard_not_full_1tb_dataset"
+  },
+  "evidence": {
+    "configSha256": "f7368533bf2d4d66e563e3e79f78465399c5581109224bf4aa4d333bfacfd0c6",
+    "datasetFiles": [
+      {
+        "bytes": 47872279,
+        "name": "day-2015-02-15-part-00079.parquet",
+        "role": "complete_pinned_official_parquet_shard",
+        "sha256": "d0733ed6b4925d0dceadca865e50cfefbccfe8c2f2e5a2d49166aa6368e2435d"
+      }
+    ],
+    "splitSha256": "0acace7899e7e5fd6fe7843e90edafdf19f2f854319074f64170e6d1a402832e"
+  },
+  "experimentId": "criteo-ctr-complete-pinned-shard-scale-v2",
+  "limitations": [
+    "This run uses every row in one pinned official parquet shard, not the complete 1TB or 24-day corpus.",
+    "The parquet conversion order was not independently audited, so source-order blocks are not described as chronological.",
+    "Criteo states positive and negative examples were subsampled at different rates; raw probabilities are not population CTR without correction.",
+    "Hashed categorical feature semantics are undisclosed.",
+    "Offline public-data metrics do not establish online CTR lift, revenue lift, or KAI production performance.",
+    "CC BY-NC-SA 4.0 restricts use to noncommercial research under its terms."
+  ],
+  "protocol": {
+    "counts": {
+      "allPositiveRows": 24768,
+      "allRows": 766864,
+      "devPositiveRows": 3538,
+      "devRows": 115029,
+      "testPositiveRows": 3609,
+      "testRows": 115031,
+      "trainPositiveRows": 17621,
+      "trainRows": 536804
+    },
+    "preprocessing": {
+      "categoricalUnknownIndex": 0,
+      "keptCategories": {
+        "cat_1": 5437,
+        "cat_10": 6272,
+        "cat_11": 5663,
+        "cat_12": 10336,
+        "cat_13": 9,
+        "cat_14": 1140,
+        "cat_15": 3181,
+        "cat_16": 50,
+        "cat_17": 4,
+        "cat_18": 387,
+        "cat_19": 14,
+        "cat_2": 5870,
+        "cat_20": 5279,
+        "cat_21": 6816,
+        "cat_22": 5714,
+        "cat_23": 4972,
+        "cat_24": 5991,
+        "cat_25": 41,
+        "cat_26": 33,
+        "cat_3": 8739,
+        "cat_4": 2033,
+        "cat_5": 4188,
+        "cat_6": 3,
+        "cat_7": 5135,
+        "cat_8": 1006,
+        "cat_9": 25
+      },
+      "maxCategoriesPerFeature": 50000,
+      "minCategoryCount": 5,
+      "numericTransform": "log1p_nonnegative_then_train_zscore"
+    },
+    "sameRowsAndFeaturesForAllModels": true,
+    "seeds": [
+      3407,
+      6502,
+      9109
+    ],
+    "splitSemantics": "fixed contiguous source-order blocks; parquet conversion order was not independently audited and is not claimed chronological",
+    "testDataUsedForSelection": false,
+    "training": {
+      "batchSize": 4096,
+      "device": "auto",
+      "epochs": 2,
+      "learningRate": 0.001,
+      "selection": "minimum dev LogLoss checkpoint only; test never selects epochs or hyperparameters",
+      "weightDecay": 1e-05
+    }
+  },
+  "resultSha256": "a0d6436d9fbd9e65a5790f3baee2692c1c4dd1a358a818ab44c4c49695f4132e",
+  "results": {
+    "runs": [
+      {
+        "model": "logistic_regression",
+        "seed": 3407,
+        "selectionMetric": {
+          "name": "devLogLoss",
+          "value": 0.14200659249293468
+        },
+        "testMetrics": {
+          "brierScore": 0.030879040223990167,
+          "ece": 0.02929970837579848,
+          "logLoss": 0.14315981354430124,
+          "nExamples": 115031,
+          "positiveRate": 0.031374151315732283,
+          "prAuc": 0.06478583723755647,
+          "rocAuc": 0.6726060395730948
+        },
+        "training": {
+          "bestDevLogLoss": 0.14200659249293468,
+          "bestEpoch": 2,
+          "device": "mps",
+          "history": [
+            {
+              "devLogLoss": 0.18471777713503318,
+              "epoch": 1,
+              "trainLogLoss": 0.33709908141038003
+            },
+            {
+              "devLogLoss": 0.14200659249293468,
+              "epoch": 2,
+              "trainLogLoss": 0.16078238535403358
+            }
+          ],
+          "trainSeconds": 6.7146665830223355
+        }
+      },
+      {
+        "model": "deepfm",
+        "seed": 3407,
+        "selectionMetric": {
+          "name": "devLogLoss",
+          "value": 0.1256473739397093
+        },
+        "testMetrics": {
+          "brierScore": 0.02937070813477373,
+          "ece": 0.003586214344966155,
+          "logLoss": 0.12803870090374503,
+          "nExamples": 115031,
+          "positiveRate": 0.031374151315732283,
+          "prAuc": 0.10404957073974797,
+          "rocAuc": 0.7328044236963132
+        },
+        "training": {
+          "bestDevLogLoss": 0.1256473739397093,
+          "bestEpoch": 2,
+          "device": "mps",
+          "history": [
+            {
+              "devLogLoss": 0.12787167416387515,
+              "epoch": 1,
+              "trainLogLoss": 0.23514249347965163
+            },
+            {
+              "devLogLoss": 0.1256473739397093,
+              "epoch": 2,
+              "trainLogLoss": 0.12702278733342753
+            }
+          ],
+          "trainSeconds": 8.016698624996934
+        }
+      },
+      {
+        "model": "dcnv2",
+        "seed": 3407,
+        "selectionMetric": {
+          "name": "devLogLoss",
+          "value": 0.12962250207147355
+        },
+        "testMetrics": {
+          "brierScore": 0.029687250206302404,
+          "ece": 0.004726656322115659,
+          "logLoss": 0.13104368721775425,
+          "nExamples": 115031,
+          "positiveRate": 0.031374151315732283,
+          "prAuc": 0.08492668311981733,
+          "rocAuc": 0.7107109146513293
+        },
+        "training": {
+          "bestDevLogLoss": 0.12962250207147355,
+          "bestEpoch": 2,
+          "device": "mps",
+          "history": [
+            {
+              "devLogLoss": 0.13136162454668887,
+              "epoch": 1,
+              "trainLogLoss": 0.17160973720363384
+            },
+            {
+              "devLogLoss": 0.12962250207147355,
+              "epoch": 2,
+              "trainLogLoss": 0.13313688793667317
+            }
+          ],
+          "trainSeconds": 7.87808654201217
+        }
+      },
+      {
+        "model": "logistic_regression",
+        "seed": 6502,
+        "selectionMetric": {
+          "name": "devLogLoss",
+          "value": 0.14192792125573284
+        },
+        "testMetrics": {
+          "brierScore": 0.03087718028934675,
+          "ece": 0.029280656320681903,
+          "logLoss": 0.14310944505965734,
+          "nExamples": 115031,
+          "positiveRate": 0.031374151315732283,
+          "prAuc": 0.06491583622851983,
+          "rocAuc": 0.6729777824788387
+        },
+        "training": {
+          "bestDevLogLoss": 0.14192792125573284,
+          "bestEpoch": 2,
+          "device": "mps",
+          "history": [
+            {
+              "devLogLoss": 0.18443944282333757,
+              "epoch": 1,
+              "trainLogLoss": 0.33684608171743813
+            },
+            {
+              "devLogLoss": 0.14192792125573284,
+              "epoch": 2,
+              "trainLogLoss": 0.16076744149278124
+            }
+          ],
+          "trainSeconds": 5.499765250016935
+        }
+      },
+      {
+        "model": "deepfm",
+        "seed": 6502,
+        "selectionMetric": {
+          "name": "devLogLoss",
+          "value": 0.12612338405796042
+        },
+        "testMetrics": {
+          "brierScore": 0.02943575768946481,
+          "ece": 0.002568264274097177,
+          "logLoss": 0.12849594958233743,
+          "nExamples": 115031,
+          "positiveRate": 0.031374151315732283,
+          "prAuc": 0.10196575057714713,
+          "rocAuc": 0.728433503903957
+        },
+        "training": {
+          "bestDevLogLoss": 0.12612338405796042,
+          "bestEpoch": 2,
+          "device": "mps",
+          "history": [
+            {
+              "devLogLoss": 0.12734650559375849,
+              "epoch": 1,
+              "trainLogLoss": 0.22834501608466365
+            },
+            {
+              "devLogLoss": 0.12612338405796042,
+              "epoch": 2,
+              "trainLogLoss": 0.12599108566452233
+            }
+          ],
+          "trainSeconds": 7.566345416998956
+        }
+      },
+      {
+        "model": "dcnv2",
+        "seed": 6502,
+        "selectionMetric": {
+          "name": "devLogLoss",
+          "value": 0.128423511908981
+        },
+        "testMetrics": {
+          "brierScore": 0.029754147837486186,
+          "ece": 0.0019445636584011414,
+          "logLoss": 0.13113488466673623,
+          "nExamples": 115031,
+          "positiveRate": 0.031374151315732283,
+          "prAuc": 0.08349625116693495,
+          "rocAuc": 0.7067641198778686
+        },
+        "training": {
+          "bestDevLogLoss": 0.128423511908981,
+          "bestEpoch": 2,
+          "device": "mps",
+          "history": [
+            {
+              "devLogLoss": 0.1301526045561648,
+              "epoch": 1,
+              "trainLogLoss": 0.1746940689391251
+            },
+            {
+              "devLogLoss": 0.128423511908981,
+              "epoch": 2,
+              "trainLogLoss": 0.1331806057828526
+            }
+          ],
+          "trainSeconds": 6.880480000021635
+        }
+      },
+      {
+        "model": "logistic_regression",
+        "seed": 9109,
+        "selectionMetric": {
+          "name": "devLogLoss",
+          "value": 0.14192561209811091
+        },
+        "testMetrics": {
+          "brierScore": 0.030878072812498887,
+          "ece": 0.02923951631802167,
+          "logLoss": 0.1431291531695632,
+          "nExamples": 115031,
+          "positiveRate": 0.031374151315732283,
+          "prAuc": 0.06484810175253344,
+          "rocAuc": 0.6721047215626339
+        },
+        "training": {
+          "bestDevLogLoss": 0.14192561209811091,
+          "bestEpoch": 2,
+          "device": "mps",
+          "history": [
+            {
+              "devLogLoss": 0.18449075303346218,
+              "epoch": 1,
+              "trainLogLoss": 0.33680319982106083
+            },
+            {
+              "devLogLoss": 0.14192561209811091,
+              "epoch": 2,
+              "trainLogLoss": 0.16061697176700485
+            }
+          ],
+          "trainSeconds": 5.584513292007614
+        }
+      },
+      {
+        "model": "deepfm",
+        "seed": 9109,
+        "selectionMetric": {
+          "name": "devLogLoss",
+          "value": 0.1260339810437695
+        },
+        "testMetrics": {
+          "brierScore": 0.029417235745308537,
+          "ece": 0.0044612703081157515,
+          "logLoss": 0.1285321546064037,
+          "nExamples": 115031,
+          "positiveRate": 0.031374151315732283,
+          "prAuc": 0.10238746540548603,
+          "rocAuc": 0.7311116612924021
+        },
+        "training": {
+          "bestDevLogLoss": 0.1260339810437695,
+          "bestEpoch": 2,
+          "device": "mps",
+          "history": [
+            {
+              "devLogLoss": 0.12763592262676463,
+              "epoch": 1,
+              "trainLogLoss": 0.2333705928050754
+            },
+            {
+              "devLogLoss": 0.1260339810437695,
+              "epoch": 2,
+              "trainLogLoss": 0.1267039220764284
+            }
+          ],
+          "trainSeconds": 7.4814122920215596
+        }
+      },
+      {
+        "model": "dcnv2",
+        "seed": 9109,
+        "selectionMetric": {
+          "name": "devLogLoss",
+          "value": 0.1286405032443042
+        },
+        "testMetrics": {
+          "brierScore": 0.029695493164554203,
+          "ece": 0.004713793023017746,
+          "logLoss": 0.13107702764486098,
+          "nExamples": 115031,
+          "positiveRate": 0.031374151315732283,
+          "prAuc": 0.08499006798886768,
+          "rocAuc": 0.7120340379886403
+        },
+        "training": {
+          "bestDevLogLoss": 0.1286405032443042,
+          "bestEpoch": 2,
+          "device": "mps",
+          "history": [
+            {
+              "devLogLoss": 0.13045828796477715,
+              "epoch": 1,
+              "trainLogLoss": 0.1655936159742645
+            },
+            {
+              "devLogLoss": 0.1286405032443042,
+              "epoch": 2,
+              "trainLogLoss": 0.13253115506231908
+            }
+          ],
+          "trainSeconds": 6.958115874993382
+        }
+      }
+    ],
+    "summary": {
+      "dcnv2": {
+        "brierScore": {
+          "mean": 0.0297122970694476,
+          "std": 2.978368322029159e-05
+        },
+        "ece": {
+          "mean": 0.003795004334511515,
+          "std": 0.0013084696883430363
+        },
+        "logLoss": {
+          "mean": 0.13108519984311715,
+          "std": 3.7676980535942984e-05
+        },
+        "prAuc": {
+          "mean": 0.08447100075853999,
+          "std": 0.000689737624103918
+        },
+        "rocAuc": {
+          "mean": 0.709836357505946,
+          "std": 0.0022385481714667327
+        },
+        "seeds": [
+          3407,
+          6502,
+          9109
+        ]
+      },
+      "deepfm": {
+        "brierScore": {
+          "mean": 0.02940790052318236,
+          "std": 2.7364465041190876e-05
+        },
+        "ece": {
+          "mean": 0.003538582975726361,
+          "std": 0.0007735500508303374
+        },
+        "logLoss": {
+          "mean": 0.12835560169749538,
+          "std": 0.0002245696413908345
+        },
+        "prAuc": {
+          "mean": 0.10280092890746038,
+          "std": 0.0008995519877932236
+        },
+        "rocAuc": {
+          "mean": 0.7307831962975575,
+          "std": 0.0017994724963039282
+        },
+        "seeds": [
+          3407,
+          6502,
+          9109
+        ]
+      },
+      "logistic_regression": {
+        "brierScore": {
+          "mean": 0.030878097775278602,
+          "std": 7.595202761063428e-07
+        },
+        "ece": {
+          "mean": 0.029273293671500684,
+          "std": 2.51187500627974e-05
+        },
+        "logLoss": {
+          "mean": 0.14313280392450725,
+          "std": 2.072425422987825e-05
+        },
+        "prAuc": {
+          "mean": 0.06484992507286992,
+          "std": 5.308752386804226e-05
+        },
+        "rocAuc": {
+          "mean": 0.6725628478715224,
+          "std": 0.00035773172738297554
+        },
+        "seeds": [
+          3407,
+          6502,
+          9109
+        ]
+      }
+    }
+  },
+  "schemaVersion": 1,
+  "source": {
+    "dataset": "Criteo 1TB Click Logs",
+    "id": "criteo-1tb-click-logs",
+    "license": "CC-BY-NC-SA-4.0",
+    "officialRepository": "https://huggingface.co/datasets/criteo/CriteoClickLogs",
+    "officialUrl": "https://ailab.criteo.com/download-criteo-1tb-click-logs-dataset/",
+    "publisher": "Criteo AI Lab",
+    "terms": "Criteo official terms apply CC BY-NC-SA 4.0 and limit licensed use to noncommercial purposes with attribution and share-alike conditions.",
+    "termsUrl": "https://ailab.criteo.com/ressources/criteo-1tb-click-logs-dataset-for-mlperf/",
+    "usage": "noncommercial_offline_research_only"
+  },
+  "status": "COMPLETE"
+}

@@ -1,0 +1,60 @@
+{
+  "experimentId": "amazon23-public-metadata-million-item-hnsw-scale-v1",
+  "dataOrigin": "public",
+  "claimableOnlinePerformance": false,
+  "purpose": "retrieval_scalability_only",
+  "catalogSources": [
+    {
+      "id": "amazon-reviews-2023-industrial-scientific",
+      "origin": "public",
+      "synthetic": false,
+      "category": "Industrial_and_Scientific",
+      "path": "data/raw/amazon-reviews-2023/Industrial_and_Scientific/meta_Industrial_and_Scientific.jsonl.gz",
+      "officialUrl": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/meta_categories/meta_Industrial_and_Scientific.jsonl.gz",
+      "expectedFile": {
+        "bytes": 281523932,
+        "sha256": "0beb251cec166347a3ec3ef23e55ec89f7fb27a6e8e9a0737d6b34cdc184ebcb"
+      }
+    },
+    {
+      "id": "amazon-reviews-2023-amazon-fashion",
+      "origin": "public",
+      "synthetic": false,
+      "category": "Amazon_Fashion",
+      "path": "data/raw/amazon-reviews-2023/Amazon_Fashion/meta_Amazon_Fashion.jsonl.gz",
+      "officialUrl": "https://mcauleylab.ucsd.edu/public_datasets/data/amazon_2023/raw/meta_categories/meta_Amazon_Fashion.jsonl.gz",
+      "expectedFile": {
+        "bytes": 224299124,
+        "sha256": "0b121c7494b0216ba3bf80adce9c79286fe08f14086966f841fe6716e1a24b73"
+      }
+    }
+  ],
+  "frozenModel": {
+    "name": "MetadataTwoTower",
+    "config": "configs/amazon-two-tower-v2.json",
+    "checkpoint": "artifacts/amazon-two-tower-v2/checkpoints/metadata-d64-uniform-seed-3407.pt",
+    "expectedSha256": "e221fbe6be56c21c2444c555eccb4f7e924a66ee09e74459a1be1fb1e4fcf256",
+    "retrainingAllowed": false
+  },
+  "protocol": {
+    "minimumUniqueItems": 1000000,
+    "queryCount": 256,
+    "seed": 20260827,
+    "ks": [20, 50, 100],
+    "embeddingBatchSize": 4096,
+    "exactItemChunkSize": 100000,
+    "warmupQueries": 10,
+    "sameFullCatalog": true,
+    "syntheticExpansion": false,
+    "duplicateVectorExpansion": false
+  },
+  "hnsw": {
+    "space": "ip",
+    "m": 16,
+    "efConstruction": 100,
+    "efSearch": 400,
+    "buildThreads": 8
+  },
+  "artifactsDir": "artifacts/amazon-million-scale-v1",
+  "output": "reports/amazon-million-scale-v1-results.json"
+}

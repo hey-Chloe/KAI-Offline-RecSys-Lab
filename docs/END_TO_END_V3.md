@@ -3,8 +3,8 @@
 ## Scope and evidence boundary
 
 This protocol turns the existing Amazon retrieval and sequence experiments into
-one reproducible offline funnel. It does not connect to KAI Compute production,
-migration 0066, payment, settlement, or business data. Amazon review/rating
+one reproducible offline funnel. It does not connect to a company production
+system, payment, settlement, or business data. Amazon review/rating
 interactions are an implicit next-item proxy; they are not impressions, clicks,
 orders, or online conversion evidence.
 

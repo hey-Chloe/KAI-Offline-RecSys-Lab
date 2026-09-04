@@ -1,0 +1,80 @@
+{
+  "experimentId": "amazon23-industrial-sequence-pretrained-v2",
+  "dataOrigin": "public",
+  "claimableOnlinePerformance": false,
+  "source": {
+    "id": "mcauley-lab-amazon-reviews-2023",
+    "name": "Amazon Reviews'23 Industrial_and_Scientific official 5-core",
+    "officialUrl": "https://amazon-reviews-2023.github.io/main.html",
+    "terms": "license not assigned by provider; isolated non-commercial research only; no raw-data redistribution",
+    "interactionMeaning": "review or rating interaction proxy; not impression or click"
+  },
+  "retriever": {
+    "config": "configs/amazon-two-tower-v2.json",
+    "checkpoint": "artifacts/amazon-two-tower-v2/checkpoints/metadata-d64-uniform-seed-3407.pt",
+    "checkpointSha256": "e221fbe6be56c21c2444c555eccb4f7e924a66ee09e74459a1be1fb1e4fcf256",
+    "seed": 3407
+  },
+  "protocol": {
+    "selectionSplit": "dev",
+    "selectionSeed": 3407,
+    "selectionMetric": "din_ndcg@100",
+    "testSeeds": [3407, 6502, 9109],
+    "ks": [20, 50, 100],
+    "candidateCount": 200,
+    "testTuningForbidden": true,
+    "testExecutionLimit": 1
+  },
+  "candidateConfigs": [
+    {
+      "id": "pretrained-frozen-n2-e2",
+      "embeddingDim": 64,
+      "hiddenDim": 128,
+      "attentionDim": 64,
+      "maxHistory": 100,
+      "negativesPerPositive": 2,
+      "trainItemEmbeddings": false,
+      "epochs": 2,
+      "batchSize": 1024,
+      "evaluationQueryBatchSize": 32,
+      "learningRate": 0.001
+    },
+    {
+      "id": "pretrained-finetune-n2-e2",
+      "embeddingDim": 64,
+      "hiddenDim": 128,
+      "attentionDim": 64,
+      "maxHistory": 100,
+      "negativesPerPositive": 2,
+      "trainItemEmbeddings": true,
+      "epochs": 2,
+      "batchSize": 1024,
+      "evaluationQueryBatchSize": 32,
+      "learningRate": 0.0005
+    },
+    {
+      "id": "pretrained-frozen-n4-e3",
+      "embeddingDim": 64,
+      "hiddenDim": 128,
+      "attentionDim": 64,
+      "maxHistory": 100,
+      "negativesPerPositive": 4,
+      "trainItemEmbeddings": false,
+      "epochs": 3,
+      "batchSize": 1024,
+      "evaluationQueryBatchSize": 32,
+      "learningRate": 0.001
+    }
+  ],
+  "artifactsDir": "artifacts/amazon-sequence-v2",
+  "output": "reports/amazon-sequence-v2-results.json",
+  "limitations": [
+    "Amazon review/rating histories are public interaction proxies, not impression/click/order logs.",
+    "The provider has not assigned a dataset license; raw data, checkpoints, and per-user outputs remain local ignored artifacts.",
+    "The sequence models rerank a frozen metadata Two-Tower Top-200 and cannot recover targets outside that set.",
+    "The frozen retriever seed is shared by all sequence runs; sequence uncertainty is measured over three training seeds only.",
+    "Three CPU/MPS-sized configurations are selected using dev DIN NDCG@100; test is opened once and never tunes the model.",
+    "A negative DIN result remains a valid outcome and will not be changed by rewriting the test or labels.",
+    "Offline public metrics do not establish online CTR, conversion, revenue, or KAI production impact."
+  ]
+}
