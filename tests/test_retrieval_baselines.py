@@ -43,6 +43,10 @@ class PopularityBaselineTest(unittest.TestCase):
         self.assertAlmostEqual(metrics[1].recall, 1.0)
         self.assertAlmostEqual(metrics[1].hit_rate, 1.0)
 
+    def test_legacy_ranking_metrics_reject_duplicate_recommendations(self) -> None:
+        with self.assertRaises(ValueError):
+            evaluate_rankings({"u1": ["a", "a"]}, {"u1": {"a"}}, [2])
+
 
 if __name__ == "__main__":
     unittest.main()
