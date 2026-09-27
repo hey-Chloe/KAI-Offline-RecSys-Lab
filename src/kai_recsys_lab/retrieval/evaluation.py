@@ -1,9 +1,8 @@
 from __future__ import annotations
 
+import math
 from dataclasses import dataclass
 from typing import Hashable, Mapping, Sequence
-
-from kai_recsys_lab.evaluation import retrieval_metrics_at_k
 
 
 @dataclass(frozen=True, slots=True)
@@ -32,19 +31,18 @@ def evaluate_rankings(
 
     results: list[RankingMetrics] = []
     for k in ks:
-        per_query = []
+        recall = hit_rate = mrr = ndcg = 0.0
         for query_id, truth in relevant_items.items():
             ranked = list(recommendations.get(query_id, ()))[:k]
-            per_query.append(retrieval_metrics_at_k(ranked, truth, k))
+            relevant_ranks = [rank for rank, item_id in enumerate(ranked, start=1) if item_id in truth]
+            hits = len(relevant_ranks)
+            recall += hits / len(truth)
+            hit_rate += float(hits > 0)
+            mrr += 1.0 / relevant_ranks[0] if relevant_ranks else 0.0
+            dcg = sum(1.0 / math.log2(rank + 1.0) for rank in relevant_ranks)
+            ideal_hits = min(len(truth), k)
+            ideal_dcg = sum(1.0 / math.log2(rank + 1.0) for rank in range(1, ideal_hits + 1))
+            ndcg += dcg / ideal_dcg
         count = len(relevant_items)
-        results.append(
-            RankingMetrics(
-                k,
-                sum(metric.recall for metric in per_query) / count,
-                sum(metric.hit_rate for metric in per_query) / count,
-                sum(metric.mrr for metric in per_query) / count,
-                sum(metric.ndcg for metric in per_query) / count,
-                count,
-            )
-        )
+        results.append(RankingMetrics(k, recall / count, hit_rate / count, mrr / count, ndcg / count, count))
     return tuple(results)
